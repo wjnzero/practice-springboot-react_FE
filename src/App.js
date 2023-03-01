@@ -1,25 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from "./layout/Navbar";
+import Home from "./pages/Home";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {AddWeapon} from "./weapons/AddWeapon";
+import {EditWeapon} from "./weapons/EditWeapon";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <Router>
+                <Navbar/>
+                <Routes>
+                    <Route exact path="/" element={<Home/>}></Route>
+                    <Route exact path="/weapons/add" element={<AddWeapon/>}></Route>
+                    <Route exact path="/weapons/:id" element={<EditWeapon/>}/>
+                </Routes>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
